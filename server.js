@@ -26,3 +26,17 @@ app.use(express.static('website'));
 port = 3000;
 
 app.listen(port, () => console.log(`Server running on localhost: ${port}`));
+
+// Get route
+app.get('/all', sendData);
+
+function sendData(req, res) {
+    res.send(projectData);
+}
+
+// Post route
+app.post('/add', addData);
+
+function addData(req, res) {
+    res.send('Post recieved');
+}
