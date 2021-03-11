@@ -35,8 +35,9 @@ function sendData(req, res) {
 }
 
 // Post route
-app.post('/add', addData);
-
-function addData(req, res) {
+app.post('/add', (req, res) => {
     res.send('Post recieved');
-}
+    projectData.temp = req.body.temp;
+    projectData.date = req.body.date;
+    projectData.userFeeling = req.body.feeling;
+})
