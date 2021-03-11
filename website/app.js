@@ -4,7 +4,7 @@ const units = '&units=metric';
 const apiKey = '&appid=6684c2778e3d4aefc3f8ba10eafc527c';
 // Create a new date instance dynamically with JS
 let d = new Date();
-let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
+let newDate = d.getMonth()+1+'.'+ d.getDate()+'.'+ d.getFullYear();
 
 // Listen for generate btn and perform data collection
 document.getElementById('generate').addEventListener('click', performAction);
