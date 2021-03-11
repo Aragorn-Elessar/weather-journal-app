@@ -42,7 +42,7 @@ const getWeather = async (URL, zip, unit, key) => {
     }
 }
 
-// Post data passed in the to server
+// Post data passed in to server
 const postData = async (url='', data = {}) => {
     await fetch(url, {
         method: 'POST',
