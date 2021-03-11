@@ -12,9 +12,9 @@ function performAction() {
     // Check if user entered a valid zip
     if (zipCode && zipCode.length == 5) {
     getWeather(baseURL, zipCode, units, apiKey)
-    // .then(postData(data))
+    // .then(postData('/add', data))
     } else {
-        alert('Yoink!');
+        alert('Please, enter a valid zip code');
     }
 }
 
@@ -25,11 +25,11 @@ const getWeather = async (URL, zip, unit, key) => {
     console.log(res);
 
     try {
-        const data = await res.json();
+        const data = await res.jsson();
         console.log(data);
         return data;
-    } catch (error) {
-        console.log(`error: ${error}`);
+    } catch (e) {
+        console.log(`error: ${e}`);
     }
 }
 
@@ -48,13 +48,25 @@ const postData = async (url='', data = {}) => {
     try {
         console.log(data);
         return;
-    } catch(error) {
-        console.log(`error: ${error}`);
+    } catch(e) {
+        console.log(`error: ${e}`);
+    }
+}
+
+// Update user interface
+const updateUI = async () => {
+    const req = await fetch('/all');
+    
+    try {
+        const allData = await req.json();
+        document.getElementById('date').innerHTML = allData[0].date;
+        document.getElementById('temp').innerHTML = allData[0].temp;
+        document.getElementById('content').innerHTML = allData[0].userFeeling;
+    } catch(e) {
+        console.log(`error: ${e}`);
     }
 }
 
 // Create a new date instance dynamically with JS
 let d = new Date();
 let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
-
-console.log(newDate);
