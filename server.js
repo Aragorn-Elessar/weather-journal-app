@@ -28,16 +28,14 @@ port = 3000;
 app.listen(port, () => console.log(`Server running on localhost: ${port}`));
 
 // Get route
-app.get('/all', sendData);
-
-function sendData(req, res) {
+app.get('/all', (req, res) => {
     res.send(projectData);
-}
+})
 
 // Post route
 app.post('/add', (req, res) => {
     res.send('Post recieved');
-    projectData.temp = req.body.temp;
     projectData.date = req.body.date;
-    projectData.userFeeling = req.body.feeling;
+    projectData.temp = req.body.temp;
+    projectData.userFeeling = req.body.feelings;
 })
