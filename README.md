@@ -3,8 +3,8 @@
 ## Table of Contents
 
 * [Overview](#Overview)
-* [project description](#project description)
-* [Getting Started](#Getting Started)
+* [project-description](#project-description)
+* [Getting-Started](#Getting-Started)
 * [Steps](#Steps)
 * [Author](#Author)
 * [Credits](#Credits)
@@ -12,18 +12,18 @@
 ## Overview
 This project require to create an asynchronous web app that uses Web API and user data to dynamically update the UI. 
 
-## project description
+## project-description
 
 The starter project has some HTML and CSS styling. To achieve the desired functionality, it required modifying the `server.js` file and the `website/app.js` file. And using `index.html` for element references. P.S: The app is functioning correctly but looks ugly still, will add some styling at some point.
 
-# Getting Started
+## Getting-Started
 
-## Prerequisites
+### Prerequisites
 
 - Install [Node.js](https://nodejs.dev/download/) from official site
 - Any code editor (e.g: VSCode, Atom,... etc)
 
-## Installing
+### Installing
 
 Terminal commands to start using project:
 
