@@ -2,17 +2,26 @@
 const baseURL = 'https://api.openweathermap.org/data/2.5/weather?zip=';
 const units = '&units=metric';
 const apiKey = '&appid=6684c2778e3d4aefc3f8ba10eafc527c';
+// Create a new date instance dynamically with JS
+let d = new Date();
+let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
 
 // Listen for generate btn and perform data collection
 document.getElementById('generate').addEventListener('click', performAction);
 
-// Grab zip code user entered 
+// Grab zip code & feeling user entered 
 function performAction() {
     const zipCode = document.getElementById('zip').value;
-    // Check if user entered a valid zip
+    const feeling = document.getElementById('feelings').value;
+    // Check if user entered a valid zip to run function chain
     if (zipCode && zipCode.length == 5) {
     getWeather(baseURL, zipCode, units, apiKey)
-    // .then(postData('/add', data))
+    .then(data => postData('/add', {
+        date: newDate,
+        temp: data.main.temp,
+        feelings: feeling,
+    }))
+    .then(() => updateUI())
     } else {
         alert('Please, enter a valid zip code');
     }
@@ -25,7 +34,7 @@ const getWeather = async (URL, zip, unit, key) => {
     console.log(res);
 
     try {
-        const data = await res.jsson();
+        const data = await res.json();
         console.log(data);
         return data;
     } catch (e) {
@@ -33,9 +42,8 @@ const getWeather = async (URL, zip, unit, key) => {
     }
 }
 
-// Post data to server
+// Post data passed in the to server
 const postData = async (url='', data = {}) => {
-    
     await fetch(url, {
         method: 'POST',
         credentials: 'same-origin',
@@ -59,14 +67,11 @@ const updateUI = async () => {
     
     try {
         const allData = await req.json();
-        document.getElementById('date').innerHTML = allData[0].date;
-        document.getElementById('temp').innerHTML = allData[0].temp;
-        document.getElementById('content').innerHTML = allData[0].userFeeling;
+        console.log(allData);
+        document.getElementById('date').innerHTML = allData.date;
+        document.getElementById('temp').innerHTML = allData.temp;
+        document.getElementById('content').innerHTML = allData.userFeeling;
     } catch(e) {
         console.log(`error: ${e}`);
     }
 }
-
-// Create a new date instance dynamically with JS
-let d = new Date();
-let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
