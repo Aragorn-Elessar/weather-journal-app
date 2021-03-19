@@ -48,7 +48,7 @@ Terminal commands to start using project:
 
 ### Server Side Changes
 
-- Set up express environment along with required dependencies
+- Set up `express` environment along with required dependencies
 ```js
 // Require Express to run server and routes
 const express = require('express');
@@ -79,7 +79,7 @@ port = 3000;
 app.listen(port, () => console.log(`Server running on localhost: ${port}`));
 ```
 
-- Create get/post routes
+- Create `get/post` routes
 ```js
 // Get route
 app.get('/all', (req, res) => {
