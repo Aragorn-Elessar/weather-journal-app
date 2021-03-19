@@ -3,7 +3,7 @@
 ## Table of Contents
 
 * [Overview](#Overview)
-* [project-description](#project-description)
+* [Project-Description](#Project-Description)
 * [Getting-Started](#Getting-Started)
 * [Steps](#Steps)
 * [Author](#Author)
@@ -12,7 +12,7 @@
 ## Overview
 This project require to create an asynchronous web app that uses Web API and user data to dynamically update the UI. 
 
-## project-description
+## Project-Description
 
 The starter project has some HTML and CSS styling. To achieve the desired functionality, it required modifying the `server.js` file and the `website/app.js` file. And using `index.html` for element references. P.S: The app is functioning correctly but looks ugly still, will add some styling at some point.
 
@@ -47,6 +47,37 @@ Terminal commands to start using project:
 ## Steps
 
 ### Server Side Changes
+
+- Set up express environment along with required dependencies
+```js
+// Require Express to run server and routes
+const express = require('express');
+
+// Start up an instance of app
+const app = express();
+
+/* Middleware*/
+const bodyParser = require('body-parser');
+
+//Here we are configuring express to use body-parser as middle-ware.
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+// Cors for cross origin allowance
+const cors = require('cors');
+app.use(cors());
+
+// Initialize the main project folder
+app.use(express.static('website'));
+```
+
+- Creat a local server
+```js
+// Setup Server
+port = 3000;
+
+app.listen(port, () => console.log(`Server running on localhost: ${port}`));
+```
 
 - Create get/post routes
 ```js
